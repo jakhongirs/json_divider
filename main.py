@@ -10,7 +10,7 @@ def main(jsonfile, n, filename):
     with open(jsonfile) as f:
         data = json.load(f)
 
-    # Split data into 3 chunks
+    # Split data into n chunks
     chunks = list(split(data, n))
 
     # Write chunks to files
