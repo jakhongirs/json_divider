@@ -324,3 +324,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+modification_type.json

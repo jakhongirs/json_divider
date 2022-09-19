@@ -6,10 +6,17 @@ def split(a, n):
     return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n))
 
 
-with open('file.json') as data_file:
-    data = json.load(data_file)
+def main(jsonfile, n, filename):
+    with open(jsonfile) as f:
+        data = json.load(f)
 
-    sorted_data = list(split(data, 3))
+    # Split data into 3 chunks
+    chunks = list(split(data, n))
 
-    with open('new_file.json', 'w', encoding='utf-8') as f:
-        json.dump(sorted_data[0], f, ensure_ascii=False, indent=4)
+    # Write chunks to files
+    for i, chunk in enumerate(chunks):
+        with open(f'{filename}_{i}.json', 'w', encoding='utf-8') as f:
+            json.dump(chunk, f, ensure_ascii=False, indent=4)
+
+
+main('modification_type.json', 20, 'modification_type')
